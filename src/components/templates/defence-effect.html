@@ -1,0 +1,12 @@
+<form class="effect-template" id="effect-{{index}}">
+    <input type="hidden" name="effect-type-{{index}}" value="{{choosenEffect}}">
+    <span class="effect-name">{{index}} - </span><span data-i18n="effects.defence.name"></span>
+    <span data-i18n="effects.defence.value"></span> : 
+    <input type="number" name="effect-value-{{index}}" value="1" min="1" max="100" step="1">
+
+    <span data-i18n="effects.defence.target"></span> :
+    <select name="effect-target-{{index}}">
+        <option value="0"><span data-i18n="effects.defence.targets.self"></span></option>
+        <option value="1"><span data-i18n="effects.defence.targets.enemy"></span></option>
+    </select>
+</form>

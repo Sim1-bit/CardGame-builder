@@ -1,0 +1,12 @@
+{
+    "description": "Scegli l'elemento di colore della carta.",
+    "colors":
+    {
+        "dark" : "Oscurità",
+        "neutral" : "Neutro",
+        "water" : "Acqua",
+        "earth" : "Terra",
+        "fire" : "Fuoco",
+        "light" : "Luce"
+    }
+}
