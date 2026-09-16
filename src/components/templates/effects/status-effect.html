@@ -12,6 +12,7 @@
     <br>
     <span data-i18n="card.effects"></span> : 
         <select id="effects-select-{{index}}" name="effects-select" onchange="addEffectTemplateToStatusEffect({{index}})">
+            <option value=""></option>
             <option value="Damage"><span data-i18n="effects.damage.name"></span></option>
             <option value="Draw"><span data-i18n="effects.draw.name"></span></option>
             <option value="Discard"><span data-i18n="effects.discard.name"></span></option>
@@ -22,5 +23,5 @@
             <option value="DefBoost"><span data-i18n="effects.DefBoost.name"></span></option>
         </select>
     <br>
-    <div id="effects-templates-list-{{index}}"></div>
+    <div id="effect-template-{{index}}"></div>
 </form>

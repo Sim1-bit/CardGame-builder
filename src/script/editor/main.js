@@ -15,7 +15,6 @@ async function createCard(){
         await createEffect(i);
     }
 
-    console.log(card);
     createJson();
 }
 
@@ -36,7 +35,20 @@ async function addEffectTemplate(){
 }
 
 async function addEffectTemplateToStatusEffect(index){
-    console.log("Adding effect to status effect", index);
+    type = document.getElementById("effects-select").value;
+
+    if(type == "")
+        return;
+    
+    effects[index] =
+    {
+        type : document.getElementById("effects-select").value,
+        index : effects.length,
+        effect : document.getElementById("effects-select-" + index).value
+    };
+
+    populateEffectStatus();
+    await loadData();
 }
   
 async function populateEffectsList() {
@@ -52,9 +64,39 @@ async function populateEffectsList() {
         pathAux = `../src/components/templates/effects/${effects[i].type}-effect.html`;
 
         const aux = await loadTemplate(pathAux, json);
+
         html = html + aux;
     }
     document.getElementById("effects-templates-list").innerHTML = html;
+}
+
+async function populateEffectStatus() {
+    let html = "";
+
+    status_list = [];
+
+    for(let i = 0; i < effects.length; i++){
+        if(effects[i].type === "Status")
+            status_list.push(i);
+    }
+
+    if(status_list.length === 0)
+        return;
+
+    for(let i = 0; i < status_list.length; i++){
+        select = document.getElementById("effects-select-" + status_list[i]);
+        if(select.value === "")
+            continue;
+
+        json = 
+        {
+            choosenEffect : effects[i].type,
+            index : (i*-1-1)
+        };
+        const aux1 = await loadTemplate("../src/components/templates/effects/"+ select.value +"-effect.html", json);
+
+        document.getElementById("effect-template-" + status_list[i]).innerHTML = aux1;
+    }
 }
 
 async function createEffect(index){
