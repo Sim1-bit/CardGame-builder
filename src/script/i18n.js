@@ -1,6 +1,6 @@
 let contents = {};
 
-const components = ["card","colors","effects"];
+const components = ["card","types","grades","colors","effects"];
 
 async function loadData() {
   contents = {};

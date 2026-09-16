@@ -1,6 +1,7 @@
 class Card{
 
     color;
+    Id;
     Name;
     Description;
     effects;
@@ -14,6 +15,7 @@ class Card{
         this.Type = Type;
         this.Grade = Grade;
         this.color = new Color(color)
+        this.Id = name.toLowerCase().replace(/\s+/g, "_");
     }
 
     addEffect(effect){

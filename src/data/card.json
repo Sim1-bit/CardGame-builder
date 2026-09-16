@@ -2,7 +2,6 @@
     "title" : "Card Creator",
     "name" : "Nome",
     "description" : "Descrizione",
-    "color" : "Colore",
     "create-button" : "Crea Carta",
     "effects" : "Effetti",
     "add-effect" : "Aggiungi Effetto"

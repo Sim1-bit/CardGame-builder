@@ -1,0 +1,10 @@
+{
+    "title" : "Tipi di carta",
+    "description": "Scegli se la carta sarà considerata d'azione, d'attaco o da difesa",
+    "types":
+    {
+        "action" : "Azione",
+        "attack" : "Attacco",
+        "defence" : "Difesa"
+    }
+}
