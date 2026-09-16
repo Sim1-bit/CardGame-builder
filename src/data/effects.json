@@ -103,7 +103,7 @@
             "enemy": "Avversario"
         }
     },
-    "status":
+    "Status":
     {
         "id" : "status",
         "name": "Status",

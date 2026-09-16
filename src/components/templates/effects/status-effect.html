@@ -1,0 +1,26 @@
+<form class="effect-template" id="effect-{{index}}">
+    <input type="hidden" name="effect-type-{{index}}" value="{{choosenEffect}}">
+    <span class="effect-name">{{index}} - </span><span data-i18n="effects.Status.name"></span>
+    <span data-i18n="effects.Status.value"></span> : 
+    <input type="number" name="effect-value-{{index}}" value="1" min="-1" max="100" step="1" except="0">
+    
+    <span data-i18n="effects.Status.target"></span> :
+    <select name="effect-target-{{index}}">
+        <option value="0"><span data-i18n="effects.Status.targets.self"></span></option>
+        <option value="1"><span data-i18n="effects.Status.targets.enemy"></span></option>
+    </select>
+    <br>
+    <span data-i18n="card.effects"></span> : 
+        <select id="effects-select-{{index}}" name="effects-select" onchange="addEffectTemplateToStatusEffect({{index}})">
+            <option value="Damage"><span data-i18n="effects.damage.name"></span></option>
+            <option value="Draw"><span data-i18n="effects.draw.name"></span></option>
+            <option value="Discard"><span data-i18n="effects.discard.name"></span></option>
+            <option value="Drop"><span data-i18n="effects.drop.name"></span></option>
+            <option value="Heal"><span data-i18n="effects.heal.name"></span></option>
+            <option value="Defence"><span data-i18n="effects.defence.name"></span></option>
+            <option value="AttBoost"><span data-i18n="effects.AttBoost.name"></span></option>
+            <option value="DefBoost"><span data-i18n="effects.DefBoost.name"></span></option>
+        </select>
+    <br>
+    <div id="effects-templates-list-{{index}}"></div>
+</form>

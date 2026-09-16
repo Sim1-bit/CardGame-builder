@@ -2,7 +2,7 @@
     <input type="hidden" name="effect-type-{{index}}" value="{{choosenEffect}}">
     <span class="effect-name">{{index}} - </span><span data-i18n="effects.DefBoost.name"></span>
     <span data-i18n="effects.DefBoost.value"></span> : 
-    <input type="number" name="effect-value-{{index}}" value="1" min="-6" max="6" step="1">
+    <input type="number" name="effect-value-{{index}}" value="1" min="-6" max="6" step="1" except="0">
 
     <span data-i18n="effects.DefBoost.target"></span> :
     <select name="effect-target-{{index}}">

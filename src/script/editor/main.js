@@ -20,9 +20,11 @@ async function createCard(){
 }
 
 async function addEffectTemplate(){
+    type = document.getElementById("effects-select").value;
+
     effect = 
     {
-        type : document.getElementById("effects").value,
+        type : document.getElementById("effects-select").value,
         index : effects.length
     };
 
@@ -33,6 +35,10 @@ async function addEffectTemplate(){
     await loadData();
 }
 
+async function addEffectTemplateToStatusEffect(index){
+    console.log("Adding effect to status effect", index);
+}
+  
 async function populateEffectsList() {
     let html = "";
 
