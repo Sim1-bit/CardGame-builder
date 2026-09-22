@@ -42,13 +42,14 @@ async function addEffectTemplateToStatusEffect(index){
     
     effects[index] =
     {
-        type : document.getElementById("effects-select").value,
+        type : "Status",//-----------
         index : effects.length,
         effect : document.getElementById("effects-select-" + index).value
     };
 
     populateEffectStatus();
     await loadData();
+    document.getElementById("effect-target-"+ Number(index*(-1)-1) +"-option2").innerHTML = "";
 }
   
 async function populateEffectsList() {
@@ -60,6 +61,8 @@ async function populateEffectsList() {
             choosenEffect : effects[i].type,
             index : i
         };
+
+        console.log(json);
 
         pathAux = `../src/components/templates/effects/${effects[i].type}-effect.html`;
 
@@ -79,7 +82,6 @@ async function populateEffectStatus() {
         if(effects[i].type === "Status")
             status_list.push(i);
     }
-
     if(status_list.length === 0)
         return;
 
@@ -90,8 +92,8 @@ async function populateEffectStatus() {
 
         json = 
         {
-            choosenEffect : effects[i].type,
-            index : (i*-1-1)
+            choosenEffect : select.value, //----
+            index : Number(status_list[i]*(-1)-1)
         };
         const aux1 = await loadTemplate("../src/components/templates/effects/"+ select.value +"-effect.html", json);
 
@@ -100,12 +102,31 @@ async function populateEffectStatus() {
 }
 
 async function createEffect(index){
-    e = {
-        $type : document.getElementsByName("effect-type-" + index)[0].value,
-        value : Number(document.getElementsByName("effect-value-" + index)[0].value),
-        target : Number(document.getElementsByName("effect-target-" + index)[0].value)
-    };
+    type = document.getElementsByName("effect-type-" + index)[0].value;
+    let e = {};
+    
+    if(type !== "Status")
+        e = {
+            $type : type,
+            value : Number(document.getElementsByName("effect-value-" + index)[0].value),
+            target : Number(document.getElementsByName("effect-target-" + index)[0].value)
+        };
+    else
+        e = {
+            $type : type,
+            target : Number(document.getElementsByName("effect-target-" + index)[0].value),
+            status : {
+                duration : Number(document.getElementsByName("effect-value-" + index)[0].value),
+                effect : {
+                    $type : document.getElementsByName("effect-type-" + Number(index * (-1) - 1))[0].value,
+                    value : Number(document.getElementsByName("effect-value-" + Number(index * (-1) - 1))[0].value),
+                    target : 0
+                }
+            }
+        }
 
+    console.log(e);
+    console.log(document.getElementsByName("effect-type-" + Number(index * (-1) - 1))[0]);
     card.addEffect(e);
 }
 
