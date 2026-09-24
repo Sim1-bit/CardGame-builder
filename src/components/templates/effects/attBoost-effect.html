@@ -4,9 +4,11 @@
     <span data-i18n="effects.AttBoost.value"></span> : 
     <input type="number" name="effect-value-{{index}}" value="1" min="-6" max="6" step="1" except="0">
 
-    <span data-i18n="effects.AttBoost.target"></span> :
-    <select name="effect-target-{{index}}">
-        <option value="0"><span data-i18n="effects.AttBoost.targets.self"></span></option>
-        <option id="effect-target-{{index}}-option2" value="1"><span data-i18n="effects.AttBoost.targets.enemy"></span></option>
-    </select>
+    <div id="effect-{{index}}-target">
+        <span data-i18n="effects.AttBoost.target"></span> :
+        <select name="effect-target-{{index}}">
+            <option value="0"><span data-i18n="effects.AttBoost.targets.self"></span></option>
+            <option id="effect-target-{{index}}-option2" value="1"><span data-i18n="effects.AttBoost.targets.enemy"></span></option>
+        </select>
+    </div>
 </form>

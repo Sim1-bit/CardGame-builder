@@ -49,7 +49,7 @@ async function addEffectTemplateToStatusEffect(index){
 
     populateEffectStatus();
     await loadData();
-    document.getElementById("effect-target-"+ Number(index*(-1)-1) +"-option2").innerHTML = "";
+    document.getElementById("effect-"+ Number(index*(-1)-1) + "-target").innerHTML = ``;
 }
   
 async function populateEffectsList() {

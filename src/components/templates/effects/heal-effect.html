@@ -4,9 +4,11 @@
     <span data-i18n="effects.heal.value"></span> : 
     <input type="number" name="effect-value-{{index}}" value="1" min="1" max="100" step="1">
 
-    <span data-i18n="effects.heal.target"></span> :
-    <select name="effect-target-{{index}}">
-        <option value="0"><span data-i18n="effects.heal.targets.self"></span></option>
-        <option id="effect-target-{{index}}-option2" value="1"><span data-i18n="effects.heal.targets.enemy"></span></option>
-    </select>
+    <div id="effect-{{index}}-target">
+        <span data-i18n="effects.heal.target"></span> :
+        <select name="effect-target-{{index}}">
+            <option value="0"><span data-i18n="effects.heal.targets.self"></span></option>
+            <option id="effect-target-{{index}}-option2" value="1"><span data-i18n="effects.heal.targets.enemy"></span></option>
+        </select>
+    </div>
 </form>
