@@ -62,9 +62,7 @@ async function populateEffectsList() {
             index : i
         };
 
-        console.log(json);
-
-        pathAux = `../src/components/templates/effects/${effects[i].type}-effect.html`;
+        pathAux = `../src/components/templates/effects/${effects[i].type.toLowerCase()}-effect.html`;
 
         const aux = await loadTemplate(pathAux, json);
 
@@ -125,8 +123,6 @@ async function createEffect(index){
             }
         }
 
-    console.log(e);
-    console.log(document.getElementsByName("effect-type-" + Number(index * (-1) - 1))[0]);
     card.addEffect(e);
 }
 
