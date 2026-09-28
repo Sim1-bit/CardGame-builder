@@ -1,10 +1,10 @@
-<form class="effect-template" id="effect-{{index}}">
+<div class="effect-template" id="effect-{{index}}">
     <input type="hidden" name="effect-type-{{index}}" value="{{choosenEffect}}">
     <span class="effect-name">{{index}} - </span><span data-i18n="effects.Status.name"></span>
-    <span data-i18n="effects.Status.value"></span> : 
+    <span data-i18n="effects.Status.value"></span>
     <input type="number" name="effect-value-{{index}}" value="1" min="-1" max="100" step="1" except="0">
     
-    <span data-i18n="effects.Status.target"></span> :
+    <span data-i18n="effects.Status.target"></span>
     <select name="effect-target-{{index}}">
         <option value="0"><span data-i18n="effects.Status.targets.self"></span></option>
         <option value="1"><span data-i18n="effects.Status.targets.enemy"></span></option>
@@ -24,4 +24,4 @@
         </select>
     <br>
     <div id="effect-template-{{index}}"></div>
-</form>
+</div>

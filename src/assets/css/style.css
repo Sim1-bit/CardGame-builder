@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Variabili CSS per facilitare la personalizzazione dei colori
+   ========================================================================== */
+:root {
+  --bg-color: #121826;
+  --panel-bg: #1e293b;
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-color: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --input-bg: #0f172a;
+  
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+/* ==========================================================================
+   Stili Base (Reset e Body)
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Contenitore Principale del Form
+   ========================================================================== */
+#card-form-spot {
+  background-color: var(--panel-bg);
+  width: 100%;
+  max-width: 800px;
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+}
+
+/* Titolo Principale */
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Stili per Input, Select e Label generici
+   ========================================================================== */
+span {
+  font-weight: 600;
+  color: #e2e8f0;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1.2rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Fix per input affiancati (es: quando ci sono select brevi) */
+input[type="number"] {
+  max-width: 150px;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+/* ==========================================================================
+   Sezioni Specifiche (Colori, Tipi, Gradi, Effetti)
+   ========================================================================== */
+#colors-form-spot,
+#types-form-spot,
+#grades-form-spot,
+#effects-form-spot {
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+/* Descrizioni sopra i select */
+#colors-form-spot span:first-child,
+#types-form-spot span:first-child,
+#grades-form-spot span:first-child {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* ==========================================================================
+   Lista degli Effetti (Templates)
+   ========================================================================== */
+#effects-templates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.effect-template {
+  background-color: #273549; /* Leggermente più chiaro per staccare */
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-color);
+  position: relative;
+}
+
+.effect-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: block;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Container interni agli effetti (es: div del target) */
+[id^="effect-"][id$="-target"] {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Bottoni
+   ========================================================================== */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+/* Bottone "Aggiungi Effetto" specifico per differenziarlo dal bottone Crea */
+button[onclick="addEffectTemplate()"] {
+  background-color: transparent;
+  border: 2px dashed var(--primary-color);
+  color: var(--primary-color);
+  margin-top: 1rem;
+}
+
+button[onclick="addEffectTemplate()"]:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Bottone Finale "Crea Carta" */
+button[onclick="createCard()"] {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+button[onclick="createCard()"]:hover {
+  background: linear-gradient(135deg, var(--primary-hover), #7c3aed);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+/* ==========================================================================
+   Nascondere elementi <br> extra usati per la formattazione nel vecchio HTML
+   ========================================================================== */
+form > br, 
+#card-form-spot > br {
+  display: none;
+}

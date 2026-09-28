@@ -67,6 +67,8 @@ async function populateEffectsList() {
         const aux = await loadTemplate(pathAux, json);
 
         html = html + aux;
+
+        console.log(html);
     }
     document.getElementById("effects-templates-list").innerHTML = html;
 }
