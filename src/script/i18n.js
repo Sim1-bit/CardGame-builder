@@ -5,7 +5,7 @@ const components = ["card","types","grades","colors","effects"];
 async function loadData() {
   contents = {};
   for(const comp of components){
-      const res = await fetch(path + `data/${comp}.json`);
+      const res = await fetch(path + `data/card-builder/${comp}.json`);
       const data = await res.json();
 
       contents[comp] = data;

@@ -1,9 +1,9 @@
 async function loadAllComponents() {
-  await loadComponent("card-form-spot", path + "components/forms/card.html");
-  await loadComponent("colors-form-spot", path + "components/forms/colors.html");
-  await loadComponent("types-form-spot", path + "components/forms/types.html");
-  await loadComponent("grades-form-spot", path + "components/forms/grades.html");
-  await loadComponent("effects-form-spot", path + "components/forms/effects.html");
+  await loadComponent("card-form-spot", path + "components/forms/card-builder/card.html");
+  await loadComponent("colors-form-spot", path + "components/forms/card-builder/colors.html");
+  await loadComponent("types-form-spot", path + "components/forms/card-builder/types.html");
+  await loadComponent("grades-form-spot", path + "components/forms/card-builder/grades.html");
+  await loadComponent("effects-form-spot", path + "components/forms/card-builder/effects.html");
 
   await writeContents();
 }

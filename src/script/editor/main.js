@@ -62,7 +62,7 @@ async function populateEffectsList() {
             index : i
         };
 
-        pathAux = `../src/components/templates/effects/${effects[i].type.toLowerCase()}-effect.html`;
+        pathAux = `../src/components/templates/card-builder/effects/${effects[i].type.toLowerCase()}-effect.html`;
 
         const aux = await loadTemplate(pathAux, json);
 
@@ -95,7 +95,7 @@ async function populateEffectStatus() {
             choosenEffect : select.value, //----
             index : Number(status_list[i]*(-1)-1)
         };
-        const aux1 = await loadTemplate("../src/components/templates/effects/"+ select.value +"-effect.html", json);
+        const aux1 = await loadTemplate("../src/components/templates/card-builder/effects/"+ select.value +"-effect.html", json);
 
         document.getElementById("effect-template-" + status_list[i]).innerHTML = aux1;
     }
