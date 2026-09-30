@@ -15,7 +15,17 @@ async function createCard(){
         await createEffect(i);
     }
 
-    createJson();
+    // createJson();
+
+    const res = await fetch('http://localhost:4500/cards/create-card', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(card)
+    });
+
+    console.log(res);
 }
 
 async function addEffectTemplate(){
@@ -67,8 +77,6 @@ async function populateEffectsList() {
         const aux = await loadTemplate(pathAux, json);
 
         html = html + aux;
-
-        console.log(html);
     }
     document.getElementById("effects-templates-list").innerHTML = html;
 }
