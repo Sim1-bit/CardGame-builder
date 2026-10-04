@@ -1,0 +1,12 @@
+{
+    "title" : "Colore",
+    "colors":
+    {
+        "dark" : "Oscurità",
+        "neutral" : "Neutro",
+        "water" : "Acqua",
+        "earth" : "Terra",
+        "fire" : "Fuoco",
+        "light" : "Luce"
+    }
+}

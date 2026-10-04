@@ -1,11 +1,26 @@
 async function loadAllComponents() {
-  await loadComponent("card-form-spot", path + "components/forms/card-builder/card.html");
-  await loadComponent("colors-form-spot", path + "components/forms/card-builder/colors.html");
-  await loadComponent("types-form-spot", path + "components/forms/card-builder/types.html");
-  await loadComponent("grades-form-spot", path + "components/forms/card-builder/grades.html");
-  await loadComponent("effects-form-spot", path + "components/forms/card-builder/effects.html");
+  switch(page){
+    case "Card":
+      await loadAllCardPageComponents();
+      break;
+    case "Deck":
+      await loadAllDeckPageComponents();
+      break;
+  }
 
   await writeContents();
+}
+
+async function loadAllCardPageComponents() {
+  await loadComponent("card-form-spot", path + "components/forms/" + folder + "/card.html");
+  await loadComponent("colors-form-spot", path + "components/forms/" + folder + "/colors.html");
+  await loadComponent("types-form-spot", path + "components/forms/" + folder + "/types.html");
+  await loadComponent("grades-form-spot", path + "components/forms/" + folder + "/grades.html");
+  await loadComponent("effects-form-spot", path + "components/forms/" + folder + "/effects.html");
+}
+
+async function loadAllDeckPageComponents() {
+  await loadComponent("deck-form-spot", path + "components/forms/" + folder + "/deck.html");
 }
 
 async function loadComponent(id, file) {

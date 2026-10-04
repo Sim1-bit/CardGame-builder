@@ -1,0 +1,21 @@
+{
+    "title" : "Grado della carta",
+    "description": "Scegli se la carta sarà considerata d'azione, d'attaco o da difesa",
+    "grades":
+    [
+        "I",
+        "II",
+        "III",
+        "IV",
+        "V",
+        "VI",
+        "VII",
+        "VIII",
+        "IX",
+        "X",
+        "Fante",
+        "Knight",
+        "Queen",
+        "King"
+    ]
+}

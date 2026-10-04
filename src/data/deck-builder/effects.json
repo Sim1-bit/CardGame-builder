@@ -1,0 +1,110 @@
+{
+    "damage": 
+    {
+        "id" : "damage",
+        "name": "Damage",
+        "value": "Valore di Attacco",
+        "target": "Target (Giocatore che riceve il danno)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "defence": 
+    {
+        "id" : "defence",
+        "name": "Defence",
+        "value": "Valore di Difesa",
+        "target": "Target (Giocatore che riceve la difesa)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "AttBoost": 
+    {
+        "id" : "attBoost",
+        "name": "Attack Boost",
+        "value": "Valore di Boost dell'attaco",
+        "target": "Target (Giocatore che riceve il modificatore di attacco)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "DefBoost": 
+    {
+        "id" : "defBoost",
+        "name": "Defence Boost",
+        "value": "Valore di Boost della difesa",
+        "target": "Target (Giocatore che riceve il modificatore di difesa)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "draw": 
+    {
+        "id" : "draw",
+        "name": "Draw",
+        "value": "Quantità di carte da pescare",
+        "target": "Target (Giocatore che pesca le carte)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "drop": 
+    {
+        "id" : "drop",
+        "name": "Drop",
+        "value": "Quantità di carte da far cadere dalla mano",
+        "target": "Target (Giocatore che scarta la carta)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "discard": 
+    {
+        "id" : "discard",
+        "name": "Discard",
+        "value": "Quantità di carte da togliere dalla cima del mazzo",
+        "target": "Target (Giocatore che scarta la carta)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "heal": 
+    {
+        "id" : "heal",
+        "name": "Heal",
+        "value": "Quantità di vita recuperata",
+        "target": "Target (Giocatore che riceve i punti vita)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    },
+    "Status":
+    {
+        "id" : "status",
+        "name": "Status",
+        "value": "Durata dello status",
+        "target": "Target (Giocatore che riceve lo status)",
+        "targets": 
+        {
+            "self": "Se stesso",
+            "enemy": "Avversario"
+        }
+    }
+}

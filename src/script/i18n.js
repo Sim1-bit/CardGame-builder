@@ -1,11 +1,25 @@
 let contents = {};
 
-const components = ["card","types","grades","colors","effects"];
+var components;
+var folder;
+var page;
+
+async function cardPage()
+{
+  components = ["card","types","grades","colors","effects"];
+  folder = 'card-builder';
+}
+
+async function deckPage() {
+  components = ["deck"];
+  folder = 'deck-builder';
+}
+
 
 async function loadData() {
   contents = {};
   for(const comp of components){
-      const res = await fetch(path + `data/card-builder/${comp}.json`);
+      const res = await fetch(path + `data/${folder}/${comp}.json`);
       const data = await res.json();
 
       contents[comp] = data;
@@ -28,4 +42,15 @@ function writeContents() {
   });
 }
 
-loadData();
+async function startPage(auxPage) {
+  page = auxPage;
+  switch(page){
+    case "Card":
+      cardPage();
+      break;
+    case "Deck":
+      deckPage();
+      break;
+  }
+  loadData();
+}
