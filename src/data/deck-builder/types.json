@@ -3,8 +3,8 @@
     "description": "Scegli se la carta sarà considerata d'azione, d'attaco o da difesa",
     "types":
     {
-        "action" : "Azione",
-        "attack" : "Attacco",
-        "defence" : "Difesa"
+        "3" : "Azione",
+        "0" : "Attacco",
+        "1" : "Difesa"
     }
 }

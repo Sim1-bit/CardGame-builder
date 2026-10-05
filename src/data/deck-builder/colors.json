@@ -2,11 +2,11 @@
     "title" : "Colore",
     "colors":
     {
-        "dark" : "Oscurità",
-        "neutral" : "Neutro",
-        "water" : "Acqua",
-        "earth" : "Terra",
-        "fire" : "Fuoco",
-        "light" : "Luce"
+        "-5" : "Oscurità",
+        "0" : "Neutro",
+        "1" : "Acqua",
+        "2" : "Terra",
+        "4" : "Fuoco",
+        "5" : "Luce"
     }
 }

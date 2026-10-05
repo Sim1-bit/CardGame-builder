@@ -11,7 +11,7 @@ async function cardPage()
 }
 
 async function deckPage() {
-  components = ["deck"];
+  components = ["deck", "types", "grades", "colors", "effects"];
   folder = 'deck-builder';
 }
 
