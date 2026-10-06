@@ -1,4 +1,4 @@
-let deck;
+let deck = [];
 let cards = [];
 
 
@@ -53,8 +53,6 @@ async function buildCardList() {
     var effects_json = await fetch(path + `data/${folder}/effects.json`);
     effects_json = await effects_json.json();
 
-    console.log(cards);
-
     for(var i = 0; i < cards.length; i++){
         await buildEffectList(i, effects_json);
     }
@@ -108,6 +106,18 @@ async function statusEffectBuilder(index, effect_json, effectId) {
     const aux = await loadTemplate(pathAux, json);
 
     document.getElementById(`effect-${index}-${effectId}-special`).innerHTML = aux;
+}
+
+async function createDeck() {
+    for(var i = 0; i < cards.length; i++){
+        if(document.getElementById(`card-${i}-checkbox`).checked){
+            deck.push(cards[i].Id);
+        }
+    }
+
+    createJson(deck, "deck-name");
+
+    deck = [];
 }
 
 buildCardList();
