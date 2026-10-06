@@ -34,6 +34,7 @@ async function buildCardList() {
 
         json = {
             index : cards.length - 1,
+            id : value.Id,
             name : value.Name,
             type : types_json.types[`${value.Type}`],
             color : colors_json.colors[`${value.color.dye}`],
