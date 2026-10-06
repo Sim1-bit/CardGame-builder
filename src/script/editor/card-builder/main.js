@@ -15,9 +15,9 @@ async function createCard(){
         await createEffect(i);
     }
 
-    createJson();
+    createJson(card, card.Id);
 
-    // to remove 
+    // TO REMOVE WHEN BACKEND IS READY
     return;
 
     const res = await fetch('http://localhost:4500/cards/create-card', {
