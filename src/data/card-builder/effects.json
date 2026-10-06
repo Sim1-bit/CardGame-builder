@@ -1,119 +1,100 @@
 {
-    "damage": 
+    "effects" : 
     {
-        "id" : "damage",
-        "name": "Damage",
-        "description": "Infliggere danno a un giocatore.",
-        "value": "Assegna il numero di danni da infliggere (1-100)",
-        "target": "Target (Giocatore che riceve il danno)",
-        "targets": 
+        "damage": 
         {
-            "self": "Se stesso",
-            "enemy": "Avversario"
+            "id" : "damage",
+            "name": "Damage",
+            "description": "Infliggere danno a un giocatore.",
+            "value": "Assegna il numero di danni da infliggere (1-100)",
+            "target": "Target (Giocatore che riceve il danno)",
+            "min": "1",
+            "max": "100"
+        },
+        "defence": 
+        {
+            "id" : "defence",
+            "name": "Defence",
+            "description": "Valore delle carte difesa per difendersi da un attaco.",
+            "value": "Assegna il numero di difesa da aumentare (1-100)",
+            "target": "Target (Giocatore che riceve la difesa)",
+            "min": "1",
+            "max": "100"
+        },
+        "attboost": 
+        {
+            "id" : "attboost",
+            "name": "Attack Boost",
+            "description": "Modificatore il valore di attacco delle carte.",
+            "value": "Assegna il modificatore di attacco (-6 a 6)",
+            "target": "Target (Giocatore che riceve il modificatore di attacco)",
+            "min": "-6",
+            "max": "6"
+        },
+        "defboost": 
+        {
+            "id" : "defboost",
+            "name": "Defence Boost",
+            "description": "Modificatore il valore di difesa delle carte.",
+            "value": "Assegna il modificatore di difesa (-6 a 6)",
+            "target": "Target (Giocatore che riceve il modificatore di difesa)",
+            "min": "-6",
+            "max": "6"
+        },
+        "draw": 
+        {
+            "id" : "draw",
+            "name": "Draw",
+            "description": "Pescare carte dal mazzo alla mano.",
+            "value": "Assegna il numero di carte da pescare (1-5)",
+            "target": "Target (Giocatore che pesca le carte)",
+            "min": "1",
+            "max": "5"
+        },
+        "drop": 
+        {
+            "id" : "drop",
+            "name": "Drop",
+            "description": "Scarta delle carte dalla mano nella pila degli scarti.",
+            "value": "Assegna il numero di carte da scartare (1-5)",
+            "target": "Target (Giocatore che scarta la carta)",
+            "min": "1",
+            "max": "5"
+        },
+        "discard": 
+        {
+            "id" : "discard",
+            "name": "Discard",
+            "description": "Scarta delle carte dalla cima del mazzo nella pila degli scarti.",
+            "value": "Assegna il numero di carte da scartare (1-10)",
+            "target": "Target (Giocatore che scarta la carta)",
+            "min": "1",
+            "max": "10"
+        },
+        "heal": 
+        {
+            "id" : "heal",
+            "name": "Heal",
+            "description": "Recupera punti vita.",
+            "value": "Assegna il numero di punti vita da recuperare (1-40)",
+            "target": "Target (Giocatore che riceve i punti vita)",
+            "min": "1",
+            "max": "40"
+        },
+        "status":
+        {
+            "id" : "status",
+            "name": "Status",
+            "description": "Applica uno status(effetto) a un giocatore.",
+            "value": "Assegna la durata dello status da applicare (1 a 10 e permanente = -1)",
+            "target": "Target (Giocatore che riceve lo status)",
+            "min": "-1",
+            "max": "10"
         }
     },
-    "defence": 
+    "targets": 
     {
-        "id" : "defence",
-        "name": "Defence",
-        "description": "Valore delle carte difesa per difendersi da un attaco.",
-        "value": "Assegna il numero di difesa da aumentare (1-100)",
-        "target": "Target (Giocatore che riceve la difesa)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "AttBoost": 
-    {
-        "id" : "attBoost",
-        "name": "Attack Boost",
-        "description": "Modificatore il valore di attacco delle carte.",
-        "value": "Assegna il modificatore di attacco (-6 a 6)",
-        "target": "Target (Giocatore che riceve il modificatore di attacco)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "DefBoost": 
-    {
-        "id" : "defBoost",
-        "name": "Defence Boost",
-        "description": "Modificatore il valore di difesa delle carte.",
-        "value": "Assegna il modificatore di difesa (-6 a 6)",
-        "target": "Target (Giocatore che riceve il modificatore di difesa)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "draw": 
-    {
-        "id" : "draw",
-        "name": "Draw",
-        "description": "Pescare carte dal mazzo alla mano.",
-        "value": "Assegna il numero di carte da pescare (1-5)",
-        "target": "Target (Giocatore che pesca le carte)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "drop": 
-    {
-        "id" : "drop",
-        "name": "Drop",
-        "description": "Scarta delle carte dalla mano nella pila degli scarti.",
-        "value": "Assegna il numero di carte da scartare (1-5)",
-        "target": "Target (Giocatore che scarta la carta)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "discard": 
-    {
-        "id" : "discard",
-        "name": "Discard",
-        "description": "Scarta delle carte dalla cima del mazzo nella pila degli scarti.",
-        "value": "Assegna il numero di carte da scartare (1-10)",
-        "target": "Target (Giocatore che scarta la carta)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "heal": 
-    {
-        "id" : "heal",
-        "name": "Heal",
-        "description": "Recupera punti vita.",
-        "value": "Assegna il numero di punti vita da recuperare (1-infinto)",
-        "target": "Target (Giocatore che riceve i punti vita)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
-    },
-    "Status":
-    {
-        "id" : "status",
-        "name": "Status",
-        "description": "Applica uno status(effetto) a un giocatore.",
-        "value": "Assegna la durata dello status da applicare (1 a infinto e permanente = -1)",
-        "target": "Target (Giocatore che riceve lo status)",
-        "targets": 
-        {
-            "self": "Se stesso",
-            "enemy": "Avversario"
-        }
+        "self": "Se stesso",
+        "enemy": "Avversario"
     }
 }

@@ -29,87 +29,38 @@ async function createCard(){
     });
 }
 
-// call when the user click the button to add an effect
-async function addEffectTemplate(){
-    type = document.getElementById("effects-select").value;
+async function createEffectTemplate(){
 
-    effect = 
-    {
-        type : document.getElementById("effects-select").value,
-        index : effects.length
-    };
+    const res = await fetch(path + `data/${folder}/effects.json`);
+    const effects_json = await res.json();
 
-    effects.push(effect);
+    const effect_selected = document.getElementById("effects-select").value;
 
-    await populateEffectsList();
-
-    await loadData();
-}
-
-async function addEffectTemplateToStatusEffect(index){
-    type = document.getElementById("effects-select").value;
-
-    if(type == "")
-        return;
-    
-    effects[index] =
-    {
-        type : "Status",//-----------
+    const effect_data = {
         index : effects.length,
-        effect : document.getElementById("effects-select-" + index).value
+        choosenEffect : effect_selected,
+        min : effects_json.effects[effect_selected].min,
+        max : effects_json.effects[effect_selected].max
     };
 
-    await populateEffectStatus();
+    effects.push({
+        $type : effect_selected,
+        value : 1,
+        target : 0
+    });
+
+    const pathAux = `../src/components/templates/${folder}/effect.html`;
+    const aux = await loadTemplate(pathAux, effect_data);
+
+    const html = document.getElementById(`effects-templates-list`).innerHTML + aux;
+
+    document.getElementById(`effects-templates-list`).innerHTML = html;
+
     await loadData();
-    document.getElementById("effect-"+ Number(index*(-1)-1) + "-target").innerHTML = ``;
-}
-  
-async function populateEffectsList() {
-    let html = "";
-
-    for(let i = 0; i < effects.length; i++){
-        json = 
-        {
-            choosenEffect : effects[i].type,
-            index : i
-        };
-
-        pathAux = `../src/components/templates/${folder}/effects/${effects[i].type.toLowerCase()}-effect.html`;
-
-        const aux = await loadTemplate(pathAux, json);
-
-        html = html + aux;
-    }
-    document.getElementById("effects-templates-list").innerHTML = html;
 }
 
-async function populateEffectStatus() {
-    let html = "";
-
-    status_list = [];
-
-    for(let i = 0; i < effects.length; i++){
-        if(effects[i].type === "Status")
-            status_list.push(i);
-    }
-    if(status_list.length === 0)
-        return;
-
-    for(let i = 0; i < status_list.length; i++){
-        select = document.getElementById("effects-select-" + status_list[i]);
-        if(select.value === "")
-            continue;
-
-        json = 
-        {
-            choosenEffect : select.value, //----
-            index : Number(status_list[i]*(-1)-1)
-        };
-        const aux1 = await loadTemplate(`../src/components/templates/${folder}/effects/` + select.value.toLowerCase() + "-effect.html", json);
-
-        document.getElementById("effect-template-" + status_list[i]).innerHTML = aux1;
-    }
-}
+// TODO: Status effect is not working properly, need to implement it
+// Same for creation effect and create card
 
 async function createEffect(index){
     type = document.getElementsByName("effect-type-" + index)[0].value;
