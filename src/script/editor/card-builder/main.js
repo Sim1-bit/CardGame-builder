@@ -15,7 +15,10 @@ async function createCard(){
         await createEffect(i);
     }
 
-    // createJson();
+    createJson();
+
+    // to remove 
+    return;
 
     const res = await fetch('http://localhost:4500/cards/create-card', {
         method: 'POST',
