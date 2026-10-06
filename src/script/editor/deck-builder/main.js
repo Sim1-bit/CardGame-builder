@@ -1,4 +1,4 @@
-let deck;
+let deck = [];
 let cards = [];
 
 
@@ -34,6 +34,7 @@ async function buildCardList() {
 
         json = {
             index : cards.length - 1,
+            id : value.Id,
             name : value.Name,
             type : types_json.types[`${value.Type}`],
             color : colors_json.colors[`${value.color.dye}`],
@@ -59,10 +60,10 @@ async function buildCardList() {
     await loadData();
 }
 
-async function buildEffectList(index, json) {
+async function buildEffectList(index, effect_json) {
     var html = '';
 
-    // to fix: effects are not being displayed correctly, need to check the data structure and how it's being accessed
+    var statusEffects = [];
 
     for(var i = 0; i < cards[index].effects.length; i++){
         json = {
@@ -70,8 +71,11 @@ async function buildEffectList(index, json) {
             effectId : i,
             choosenEffect : cards[index].effects[i].$type.toLowerCase(),
             value : cards[index].effects[i].value,
-            target : json.targets[cards[index].effects[i].target]
+            target : effect_json.targets[cards[index].effects[i].target]
         };
+
+        if(json.choosenEffect === "status")
+            statusEffects.push(i);
 
         pathAux = `../src/components/templates/${folder}/effect.html`;
 
@@ -80,6 +84,40 @@ async function buildEffectList(index, json) {
         html = html + aux;
     }
     document.getElementById(`effects-list-${index}`).innerHTML = html;
+
+    for(var i = 0; i < statusEffects.length; i++){
+        await statusEffectBuilder(index, effect_json, statusEffects[i]);
+    }
+}
+
+async function statusEffectBuilder(index, effect_json, effectId) {
+    var effectStatusId = (effectId + 1) * (-1);
+
+    json = {
+        index : index,
+        effectId : `${effectId}${effectStatusId}`,
+        choosenEffect : cards[index].effects[effectId].status.effect.$type.toLowerCase(),
+        value : cards[index].effects[effectId].status.effect.value,
+        target : effect_json.targets[cards[index].effects[effectId].status.effect.target]
+    };
+
+    pathAux = `../src/components/templates/${folder}/effect.html`;
+
+    const aux = await loadTemplate(pathAux, json);
+
+    document.getElementById(`effect-${index}-${effectId}-special`).innerHTML = aux;
+}
+
+async function createDeck() {
+    for(var i = 0; i < cards.length; i++){
+        if(document.getElementById(`card-${i}-checkbox`).checked){
+            deck.push(cards[i].Id);
+        }
+    }
+
+    createJson(deck, document.getElementById("deck-owner").value.toLowerCase().replace(/\s+/g, '_'));
+
+    deck = [];
 }
 
 buildCardList();

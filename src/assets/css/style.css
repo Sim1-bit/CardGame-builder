@@ -6,6 +6,7 @@
   --panel-bg: #1e293b;
   --primary-color: #6366f1;
   --primary-hover: #4f46e5;
+  --card-accent: #10b981; /* Nuova variabile: verde per distinguere le carte dagli effetti */
   --text-color: #f8fafc;
   --text-muted: #94a3b8;
   --border-color: #334155;
@@ -38,7 +39,9 @@ body {
 /* ==========================================================================
    Contenitore Principale del Form
    ========================================================================== */
-#card-form-spot {
+/* Adattato per supportare sia il form della singola carta che quello del deck */
+#card-form-spot,
+#deck-form-spot {
   background-color: var(--panel-bg);
   width: 100%;
   max-width: 800px;
@@ -61,13 +64,14 @@ h1 {
 }
 
 /* ==========================================================================
-   Stili per Input, Select e Label generici
+   Stili per Input, Select, Checkbox e Label generici
    ========================================================================== */
 span {
   font-weight: 600;
   color: #e2e8f0;
   display: inline-block;
   margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 input[type="text"],
@@ -98,6 +102,16 @@ input[type="number"] {
   max-width: 150px;
 }
 
+/* Checkbox per la selezione delle carte nel deck */
+input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-left: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+  accent-color: var(--card-accent);
+}
+
 select {
   cursor: pointer;
   appearance: none;
@@ -109,7 +123,7 @@ select {
 }
 
 /* ==========================================================================
-   Sezioni Specifiche (Colori, Tipi, Gradi, Effetti)
+   Sezioni Specifiche
    ========================================================================== */
 #colors-form-spot,
 #types-form-spot,
@@ -122,31 +136,53 @@ select {
   border: 1px solid var(--border-color);
 }
 
-/* Descrizioni sopra i select */
-#colors-form-spot span:first-child,
-#types-form-spot span:first-child,
-#grades-form-spot span:first-child {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 400;
-  display: block;
-  margin-bottom: 0.8rem;
-}
-
 /* ==========================================================================
-   Lista degli Effetti (Templates)
+   Lista delle Carte (Deck Builder)
    ========================================================================== */
-#effects-templates-list {
+#cards-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card-template {
+  background-color: #273549; 
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--card-accent);
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.card-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--card-accent);
+  margin-bottom: 1rem;
+  display: inline-block;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+  width: calc(100% - 2.5rem);
+}
+
+/* ==========================================================================
+   Lista degli Effetti (Templates) all'interno delle carte
+   ========================================================================== */
+#effects-templates-list,
+[id^="effects-list-"] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .effect-template {
-  background-color: #273549; /* Leggermente più chiaro per staccare */
-  padding: 1.5rem;
+  background-color: var(--panel-bg); /* Scurito leggermente per staccare dal background della carta */
+  padding: 1.2rem;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
   border-left: 4px solid var(--primary-color);
   position: relative;
 }
@@ -162,7 +198,7 @@ select {
 }
 
 /* Container interni agli effetti (es: div del target) */
-[id^="effect-"][id$="-target"] {
+[id^="effect-"][id$="-special"] {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
@@ -192,7 +228,7 @@ button:active {
   transform: translateY(2px);
 }
 
-/* Bottone "Aggiungi Effetto" specifico per differenziarlo dal bottone Crea */
+/* Bottone "Aggiungi Effetto" specifico */
 button[onclick="addEffectTemplate()"] {
   background-color: transparent;
   border: 2px dashed var(--primary-color);
@@ -204,9 +240,10 @@ button[onclick="addEffectTemplate()"]:hover {
   background-color: rgba(99, 102, 241, 0.1);
 }
 
-/* Bottone Finale "Crea Carta" */
-button[onclick="createCard()"] {
-  margin-top: 2rem;
+/* Bottone Finale "Crea Carta" e "Crea Deck" */
+button[onclick="createCard()"],
+button[data-i18n="deck.create-button"] {
+  margin-top: 1rem;
   padding: 1.2rem;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -215,7 +252,8 @@ button[onclick="createCard()"] {
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
-button[onclick="createCard()"]:hover {
+button[onclick="createCard()"]:hover,
+button[data-i18n="deck.create-button"]:hover {
   background: linear-gradient(135deg, var(--primary-hover), #7c3aed);
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
 }
@@ -224,6 +262,8 @@ button[onclick="createCard()"]:hover {
    Nascondere elementi <br> extra usati per la formattazione nel vecchio HTML
    ========================================================================== */
 form > br, 
-#card-form-spot > br {
+#card-form-spot > br,
+#deck-form-spot > br,
+.card-template > br {
   display: none;
 }

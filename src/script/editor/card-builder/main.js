@@ -138,20 +138,6 @@ async function createEffect(index){
     card.addEffect(e);
 }
 
-async function createJson()
-{
-  const json = JSON.stringify(card, null, 2);
-  const blob = new Blob([json], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = card.Id + ".json";
-  link.click();
-
-  URL.revokeObjectURL(url);
-}
-
 async function updateEffect(index){
 
 }
