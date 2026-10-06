@@ -115,7 +115,7 @@ async function createDeck() {
         }
     }
 
-    createJson(deck, "deck-name");
+    createJson(deck, document.getElementById("deck-owner").value.toLowerCase().replace(/\s+/g, '_'));
 
     deck = [];
 }
