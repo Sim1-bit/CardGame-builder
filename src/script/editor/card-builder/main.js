@@ -56,7 +56,54 @@ async function createEffectTemplate(){
 
     document.getElementById(`effects-templates-list`).innerHTML = html;
 
+    if(effect_selected === "status"){
+        await createStatusEffectSelectTemplate(effects.length - 1, effects_json);
+    }
+
     await loadData();
+}
+
+async function createStatusEffectSelectTemplate(index){
+    effects[effects.length - 1] = {
+        $type : effects[effects.length - 1].$type,
+        target : effects[effects.length - 1].target,
+        value : effects[effects.length - 1].value,
+        status : {
+            duration : 1,
+            effect : {}
+        }
+    };
+
+    var effectStatusId = (index + 1) * (-1);
+
+    const effect_data = {
+        index : effects.length,
+        effectId : `${index}${effectStatusId}`
+    };
+
+    const pathAux = `../src/components/templates/${folder}/status.html`;
+    const aux = await loadTemplate(pathAux, effect_data);
+
+    document.getElementById(`effect-${index}-special`).innerHTML = aux;
+}
+
+
+async function createStatusEffectTemplate(index, effectId){
+    var effectStatusId = (effectId + 1) * (-1);
+
+    json = {
+        index : index,
+        effectId : `${effectId}${effectStatusId}`,
+        choosenEffect : effect_selected,
+        min : effects_json.effects[effect_selected].min,
+        max : effects_json.effects[effect_selected].max
+    };
+
+    pathAux = `../src/components/templates/${folder}/effect.html`;
+
+    const aux = await loadTemplate(pathAux, json);
+
+    document.getElementById(`effect-${index}-${effectId}-special`).innerHTML = aux;
 }
 
 // TODO: Status effect is not working properly, need to implement it

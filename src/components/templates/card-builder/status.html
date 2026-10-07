@@ -1,0 +1,17 @@
+<div class="effect-template" id="effect-{{index}}">
+    <span data-i18n="card.effects"></span> : 
+        <select id="effects-select-{{index}}" name="effects-select" onchange="createStatusEffectTemplate({{index}}, {{effectId}})">
+            <option value=""></option>
+            <option value="damage"><span data-i18n="effects.effects.damage.name"></span></option>
+            <option value="draw"><span data-i18n="effects.effects.draw.name"></span></option>
+            <option value="discard"><span data-i18n="effects.effects.discard.name"></span></option>
+            <option value="drop"><span data-i18n="effects.effects.drop.name"></span></option>
+            <option value="heal"><span data-i18n="effects.effects.heal.name"></span></option>
+            <option value="defence"><span data-i18n="effects.effects.defence.name"></span></option>
+            <option value="attboost"><span data-i18n="effects.effects.attboost.name"></span></option>
+            <option value="defboost"><span data-i18n="effects.effects.defboost.name"></span></option>
+        </select>
+    <br>
+
+    <div id="effect-{{index}}-{{effectId}}-special"></div>
+</div>
