@@ -3,7 +3,7 @@ let cards = [];
 
 
 async function getAllCards() {
-    const res = await fetch('http://localhost:3000/cards/', {
+    const res = await fetch(`${CONFIG.API_URL}/cards/`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'

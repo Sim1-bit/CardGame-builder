@@ -20,7 +20,7 @@ async function createCard(){
     // TO REMOVE WHEN BACKEND IS READY
     return;
 
-    const res = await fetch('http://localhost:4500/cards/create-card', {
+    const res = await fetch(`${CONFIG.API_URL}/cards/create-card`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json'
