@@ -17,13 +17,15 @@ async function createCard(){
 
     createJson(card, card.Id);
 
-    const res = await fetch(`${CONFIG.API_URL}/cards/create-card`, {
+    const res = await fetch(`https://card-game-backend-eight.vercel.app/cards/create-card`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json'
         },
         body: JSON.stringify(card)
     });
+
+    console.log(res);
 }
 
 async function createEffectTemplate(){

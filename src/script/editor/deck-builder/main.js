@@ -3,7 +3,7 @@ let cards = [];
 
 
 async function getAllCards() {
-    const res = await fetch(`${CONFIG.API_URL}/cards/`, {
+    const res = await fetch(`https://card-game-backend-eight.vercel.app/cards/`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
