@@ -17,9 +17,6 @@ async function createCard(){
 
     createJson(card, card.Id);
 
-    // TO REMOVE WHEN BACKEND IS READY
-    return;
-
     const res = await fetch(`${CONFIG.API_URL}/cards/create-card`, {
         method: 'POST',
         headers: {
