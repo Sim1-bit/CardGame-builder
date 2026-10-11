@@ -64,6 +64,7 @@ async function createEffectTemplate(){
 }
 
 async function createStatusEffectSelectTemplate(index){
+
     effects[effects.length - 1] = {
         $type : effects[effects.length - 1].$type,
         target : effects[effects.length - 1].target,
@@ -77,8 +78,8 @@ async function createStatusEffectSelectTemplate(index){
     var effectStatusId = (index + 1) * (-1);
 
     const effect_data = {
-        index : effects.length,
-        effectId : `${index}${effectStatusId}`
+        index : index,
+        effectId : `${effectStatusId}`
     };
 
     const pathAux = `../src/components/templates/${folder}/status.html`;
@@ -87,13 +88,15 @@ async function createStatusEffectSelectTemplate(index){
     document.getElementById(`effect-${index}-special`).innerHTML = aux;
 }
 
+async function createStatusEffectTemplate(index, effectStatusId){
 
-async function createStatusEffectTemplate(index, effectId){
-    var effectStatusId = (effectId + 1) * (-1);
+    var effect_selected = document.getElementById("effects-select-" + index).value;
+
+    const res = await fetch(path + `data/${folder}/effects.json`);
+    const effects_json = await res.json();
 
     json = {
-        index : index,
-        effectId : `${effectId}${effectStatusId}`,
+        index : `${index}-${effectStatusId}`,
         choosenEffect : effect_selected,
         min : effects_json.effects[effect_selected].min,
         max : effects_json.effects[effect_selected].max
@@ -103,35 +106,42 @@ async function createStatusEffectTemplate(index, effectId){
 
     const aux = await loadTemplate(pathAux, json);
 
-    document.getElementById(`effect-${index}-${effectId}-special`).innerHTML = aux;
+    document.getElementById(`effect-${index}-${effectStatusId}-spot`).innerHTML = aux;
+    document.getElementById(`effect-${index}-${effectStatusId}-target`).innerHTML = "";
+
+    await loadData();
 }
 
 // TODO: Status effect is not working properly, need to implement it
 // Same for creation effect and create card
 
 async function createEffect(index){
-    type = document.getElementsByName("effect-type-" + index)[0].value;
+    type = document.getElementById(`effect-type-${index}`).value;
     let e = {};
     
-    if(type !== "Status")
+    if(type !== "status")
+    {
         e = {
             $type : type,
-            value : Number(document.getElementsByName("effect-value-" + index)[0].value),
-            target : Number(document.getElementsByName("effect-target-" + index)[0].value)
+            value : Number(document.getElementById(`effect-value-${index}`).value),
+            target : Number(document.getElementById(`effect-target-${index}`).value)
         };
+    }
     else
+    {
         e = {
             $type : type,
-            target : Number(document.getElementsByName("effect-target-" + index)[0].value),
+            target : Number(document.getElementById(`effect-target-${index}`).value),
             status : {
-                duration : Number(document.getElementsByName("effect-value-" + index)[0].value),
+                duration : Number(document.getElementById(`effect-value-${index}`).value),
                 effect : {
-                    $type : document.getElementsByName("effect-type-" + Number(index * (-1) - 1))[0].value,
-                    value : Number(document.getElementsByName("effect-value-" + Number(index * (-1) - 1))[0].value),
+                    $type : document.getElementById(`effect-type-${index}-${index * (-1) - 1}`).value,
+                    value : Number(document.getElementById(`effect-value-${index}-${index * (-1) - 1}`).value),
                     target : 0
                 }
             }
         }
+    }
 
     card.addEffect(e);
 }

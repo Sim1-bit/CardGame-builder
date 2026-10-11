@@ -3,7 +3,7 @@ let cards = [];
 
 
 async function getAllCards() {
-    const res = await fetch('http://localhost:4500/cards/', {
+    const res = await fetch('http://localhost:3000/cards/', {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
